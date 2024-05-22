@@ -9,17 +9,15 @@ function useCurrencyInfo(currency) {
                 const response = await fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${currency}.json`);
                 const result = await response.json();
                 setData(result[currency]);
+                console.log('Fetched data:', result[currency]); // Log data after fetching
             } catch (error) {
                 console.error('Error fetching currency data:', error);
             }
         };
         fetchData();
-        // Log data inside useEffect to ensure it logs after data is updated
-        console.log('Fetched data:', data);
     }, [currency]);
 
-    // Log data outside useEffect if needed for other reasons
-    console.log('Current data:', data);
+    console.log('Current data:', data); // Log current data outside useEffect
 
     return data;
 }
